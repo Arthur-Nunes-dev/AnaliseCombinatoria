@@ -45,7 +45,7 @@ async function main() {
     return;
   }
   
-  outro('[p] não pode ser manhor que [n]')
+  outro('[n] não pode ser menor q [p]')
   const n = parseInt(await text({ message: 'Digite o valor de n:' }));
   const p = parseInt(await text({ message: 'Digite o valor de p:' }));
 
