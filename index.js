@@ -15,6 +15,13 @@ function fatorial(n) {
   return resultado;
 }
 
+function permutacaoSimples(n) {
+  if (n < 0 || fatorial(n) === undefined) {
+    return "Entrada inválida.";
+  }
+  return fatorial(n)
+}
+
 // Possibilidades sem repetir
 function permutacao(n, p) {
   if (n < 0 || p < 0 || p > n || fatorial(n) === undefined || fatorial(n - p) === undefined) {
@@ -35,28 +42,36 @@ async function main() {
   const escolha = await select({
     message: 'Escolha a operação:',
     options: [
-      { value: '1', label: 'Permutação' },
-      { value: '2', label: 'Combinação' },
-      { value: '3', label: 'Sair' },
+      { value: '1', label: 'Permutação simples' },
+      { value: '2', label: 'Permutação' },
+      { value: '3', label: 'Combinação' },
+      { value: '4', label: 'Sair' },
     ],
   });
-  if (escolha === '3') {
-    outro('Encerrando o script.' );
+  if (escolha === '4') {
+    outro('Encerrando o script.');
     return;
   }
-  
+
   outro('[p] não pode ser manhor que [n]')
-  const n = parseInt(await text({ message: 'Digite o valor de n:' }));
-  const p = parseInt(await text({ message: 'Digite o valor de p:' }));
 
   if (escolha === '1') {
-    console.log(permutacao(n, p));
-    outro('Encerrando o script.' );
-    return;
+    const n = parseInt(await text({ message: 'Digite o valor de n:' }));
+    console.log(permutacaoSimples(n));
+    outro('Encerrando o script.');
+    return main();
   } else if (escolha === '2') {
+    const n = parseInt(await text({ message: 'Digite o valor de n:' }));
+    const p = parseInt(await text({ message: 'Digite o valor de p:' }));
+    console.log(permutacao(n, p));
+    outro('Encerrando o script.');
+    return main();
+  } else if (escolha === '3') {
+    const n = parseInt(await text({ message: 'Digite o valor de n:' }));
+    const p = parseInt(await text({ message: 'Digite o valor de p:' }));
     console.log(combinacao(n, p));
-    outro('Encerrando o script.' );
-    return;
+    outro('Encerrando o script.');
+    return main();
   }
 }
 
