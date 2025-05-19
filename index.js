@@ -52,6 +52,9 @@ async function main() {
     outro('Encerrando o script.');
     return;
   }
+  
+  const n = parseInt(await text({ message: 'Digite o valor de n:' }));
+  const p = parseInt(await text({ message: 'Digite o valor de p:' }));
 
   outro('[p] não pode ser manhor que [n]')
 
